@@ -34,14 +34,24 @@ export function ContentContainer() {
 
 	const handleLevelUp = (index, newLevel) => {
 		const generatorArray = [...generators];
-		const baseRevenue = generatorArray[index].baseRevenue;
-		const revenueMultiplier = generatorArray[index].revenueMultiplier;
+		generatorArray[index].level = newLevel;
 		const growthRate = generatorArray[index].growthRate;
 
-		generatorArray[index].level = newLevel;
-		//This needs to be modified
+		//Change Revenue
+		const baseRevenue = generatorArray[index].baseRevenue;
+		const revenueMultiplier = generatorArray[index].revenueMultiplier;
+
 		generatorArray[index].revenue =
 			Math.floor(baseRevenue + newLevel * growthRate) * revenueMultiplier;
+
+		//ChangeCost
+		const baseCost = generatorArray[index].baseCost;
+
+		generatorArray[index].costToLevel = Math.floor(
+			baseCost * Math.pow(growthRate, newLevel)
+		);
+		
+		//Set the Generators array back
 		setGenerators([...generatorArray]);
 	};
 
@@ -55,6 +65,7 @@ export function ContentContainer() {
 					name={generator.name}
 					level={generator.level}
 					revenue={generator.revenue}
+					costToLevel={generator.costToLevel}
 					timeToGenerate={generator.timeToGenerate}
 					handleLevelUp={handleLevelUp}
 					handleMoneyGenerated={handleMoneyGenerated}

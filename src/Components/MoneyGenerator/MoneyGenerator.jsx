@@ -2,13 +2,23 @@ import { React } from "react";
 import "./MoneyGenerator.css";
 
 export function MoneyGenerator(params) {
-	const { id, name, level, revenue, handleLevelUp, handleMoneyGenerated } =
-		params;
+	const {
+		id,
+		name,
+		level,
+		revenue,
+		handleLevelUp,
+		handleMoneyGenerated,
+		costToLevel,
+	} = params;
 
 	return (
 		<div className="generator">
 			<p>{name}</p>
-			<p>level: {level}</p>
+			<div className="stat-container">
+				<p>level: {level}</p>
+				<p>cost: {costToLevel} </p>
+			</div>
 			<div className="button-container">
 				<button onClick={() => handleLevelUp(id, level + 1)}>
 					Upgrade
