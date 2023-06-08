@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import "./MoneyGenerator.css";
 
 export function MoneyGenerator(params) {
@@ -8,9 +8,22 @@ export function MoneyGenerator(params) {
 		level,
 		revenue,
 		handleLevelUp,
-		handleMoneyGenerated,
+		timeToGenerate,
+		handleMoneyChange,
 		costToLevel,
 	} = params;
+
+	// const timer = setTimeout(
+	// 	() => handleMoneyChange(revenue, "add"),
+	// 	timeToGenerate
+	// );
+	useEffect(() => {
+		let interval = setInterval(
+			() => handleMoneyChange(revenue, "add"),
+			timeToGenerate
+		);
+		return () => clearInterval(interval);
+	}, [revenue]);
 
 	return (
 		<div className="generator">
@@ -22,9 +35,6 @@ export function MoneyGenerator(params) {
 			<div className="button-container">
 				<button onClick={() => handleLevelUp(id, level + 1)}>
 					Upgrade
-				</button>
-				<button onClick={() => handleMoneyGenerated(revenue)}>
-					Generate Money
 				</button>
 			</div>
 		</div>

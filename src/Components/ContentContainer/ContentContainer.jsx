@@ -6,11 +6,28 @@ import "./ContentContainer.css";
 
 export function ContentContainer() {
 	const [money, setMoney] = useState(0);
-	const [generators, setGenerators] = useState([]);
+	const [generators, setGenerators] = useState([
+		{
+			level: 1,
+			baseCost: GeneratorData[0].cost,
+			baseTime: GeneratorData[0].time,
+			baseRevenue: GeneratorData[0].revenue,
+			name: GeneratorData[0].name,
+			growthRate: GeneratorData[0].growthRate,
+			costToLevel: GeneratorData[0].cost,
+			revenue: GeneratorData[0].revenue,
+			timeToGenerate: GeneratorData[0].time,
+			revenueMultiplier: 1,
+		},
+	]);
 
 	const handleNewGenerator = () => {
 		const newIndex = generators.length;
 		const newGeneratorData = GeneratorData[newIndex];
+
+		if (!handleMoneyChange(newGeneratorData.cost, "subtract")) {
+			return;
+		}
 
 		setGenerators([
 			...generators,
@@ -28,12 +45,34 @@ export function ContentContainer() {
 			},
 		]);
 	};
-	const handleMoneyGenerated = (amountGenerated) => {
-		setMoney(money + amountGenerated);
+	const handleMoneyChange = (changeAmount, operation) => {
+		let returnFlag = false;
+
+		switch (operation.toLowerCase()) {
+			case "add":
+				setMoney((money) => money + changeAmount);
+				returnFlag = true;
+				break;
+			case "subtract":
+				if (changeAmount > money) {
+					returnFlag = false;
+					break;
+				}
+				setMoney((money) => money - changeAmount);
+				returnFlag = true;
+				break;
+		}
+
+		return returnFlag;
 	};
 
 	const handleLevelUp = (index, newLevel) => {
 		const generatorArray = [...generators];
+
+		if (!handleMoneyChange(generatorArray[index].costToLevel, "subtract")) {
+			return;
+		}
+
 		generatorArray[index].level = newLevel;
 		const growthRate = generatorArray[index].growthRate;
 
@@ -50,7 +89,7 @@ export function ContentContainer() {
 		generatorArray[index].costToLevel = Math.floor(
 			baseCost * Math.pow(growthRate, newLevel)
 		);
-		
+
 		//Set the Generators array back
 		setGenerators([...generatorArray]);
 	};
@@ -68,10 +107,13 @@ export function ContentContainer() {
 					costToLevel={generator.costToLevel}
 					timeToGenerate={generator.timeToGenerate}
 					handleLevelUp={handleLevelUp}
-					handleMoneyGenerated={handleMoneyGenerated}
+					handleMoneyChange={handleMoneyChange}
 				/>
 			))}
-			<button onClick={handleNewGenerator}>Get New Generator</button>
+			<button onClick={handleNewGenerator}>
+				Get New Generator Cost:
+				{GeneratorData[generators.length].cost}
+			</button>
 		</section>
 	);
 }
