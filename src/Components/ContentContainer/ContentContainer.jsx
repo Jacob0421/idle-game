@@ -13,7 +13,9 @@ export function ContentContainer() {
 			},
 		]);
 	};
-	const handleMoneyGenerated = (generator) => {};
+	const handleMoneyGenerated = (amountGenerated) => {
+		setMoney(money + amountGenerated);
+	};
 
 	const handleLevelUp = (index, newLevel) => {
 		const generatorArray = [...generators];
@@ -24,12 +26,15 @@ export function ContentContainer() {
 
 	return (
 		<>
+			Money: {money}
 			{generators.map((generator, index) => (
 				<MoneyGenerator
 					key={index + 1}
 					id={index}
 					level={generator.level}
+					amountGenerated={250 + 25 * generator.level + 1000 * index}
 					handleLevelUp={handleLevelUp}
+					handleMoneyGenerated={handleMoneyGenerated}
 				/>
 			))}
 			<button onClick={handleNewGenerator}>Get New Generator</button>

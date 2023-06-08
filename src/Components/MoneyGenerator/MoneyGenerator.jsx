@@ -1,7 +1,14 @@
-import { React, useState } from "react";
+import { React } from "react";
 
 export function MoneyGenerator(params) {
-	const { id, name, level, generator, handleLevelUp } = params;
+	const {
+		id,
+		name,
+		level,
+		amountGenerated,
+		handleLevelUp,
+		handleMoneyGenerated,
+	} = params;
 
 	return (
 		<>
@@ -9,6 +16,9 @@ export function MoneyGenerator(params) {
 			<p>level: {level}</p>
 			<button onClick={() => handleLevelUp(id, level + 1)}>
 				Upgrade
+			</button>
+			<button onClick={() => handleMoneyGenerated(amountGenerated)}>
+				Generate Money
 			</button>
 		</>
 	);
