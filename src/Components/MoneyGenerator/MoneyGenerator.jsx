@@ -1,7 +1,9 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import "./MoneyGenerator.css";
 
 export function MoneyGenerator(params) {
+	const [isClicked, setIsClicked] = useState(false);
+
 	const {
 		id,
 		name,
@@ -11,12 +13,9 @@ export function MoneyGenerator(params) {
 		timeToGenerate,
 		handleMoneyChange,
 		costToLevel,
+		image,
 	} = params;
 
-	// const timer = setTimeout(
-	// 	() => handleMoneyChange(revenue, "add"),
-	// 	timeToGenerate
-	// );
 	useEffect(() => {
 		let interval = setInterval(
 			() => handleMoneyChange(revenue, "add"),
@@ -27,14 +26,27 @@ export function MoneyGenerator(params) {
 
 	return (
 		<div className="generator">
-			<p>{name}</p>
-			<div className="stat-container">
-				<p>level: {level}</p>
-				<p>cost: {costToLevel} </p>
-			</div>
-			<div className="button-container">
+			<img
+				src={process.env.PUBLIC_URL + image}
+				alt={image}
+				className={`generator-icon ${
+					isClicked ? "click-animation" : ""
+				}`}
+				onClick={() => {
+					setIsClicked(true);
+					handleLevelUp(id, level + 1);
+				}}
+				onAnimationEnd={() => setIsClicked(false)}
+			/>
+
+			<div>
+				<p>{name}</p>
+				<div className="stat-container">
+					<p>Level: {level}</p>
+					<p>Revenue: {revenue}</p>
+				</div>
 				<button onClick={() => handleLevelUp(id, level + 1)}>
-					Upgrade
+					Buy Upgrade: ${costToLevel}
 				</button>
 			</div>
 		</div>
