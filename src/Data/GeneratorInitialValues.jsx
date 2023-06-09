@@ -43,4 +43,11 @@ export const GeneratorData = [
 		time: 48000,
 		revenue: 100840,
 	},
+			{
+		name: "Seventh Generator",
+		cost: 403680,
+		growthRate: 1.11,
+		time: 96000,
+		revenue: 200840,
+	},
 ];
