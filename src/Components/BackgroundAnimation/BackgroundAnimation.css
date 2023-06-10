@@ -3,16 +3,16 @@
     bottom: 1px;
     left: 0;
     width: 96vw;
-    padding: 0 2vw;
+    padding: 1vh 2vw;
     overflow: hidden;
 }
 
 
 .pacman {
     position: relative;
-    left: -10%;
+    left: -20%;
     top: 0;
-    display: block;
+    display: inline-block;
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -21,7 +21,7 @@
     animation: move infinite 11s linear, mouth infinite .5s linear;
 }
 
-.eyes{
+.pacman-eye{
     display: block;
     position: relative;
     background-color: black;
@@ -48,9 +48,9 @@
 
 @keyframes move {
     45% {
-        transform: translateX(110vw)
+        transform: translateX(140vw)
     } 50% {
-        transform: translateX(110vw) scaleX(-1);
+        transform: translateX(140vw) scaleX(-1);
     }
     95% {
         transform: translateX(-120px) scaleX(-1);
@@ -67,7 +67,7 @@
     position: absolute;
     top:0;
     left: 0;
-    z-index: -2;
+    z-index: -9999;
 }
 
 .snack-pellet {
@@ -77,7 +77,7 @@
     width: 20px;
     background-color: rgb(255, 228, 155);
     border-radius: 50%;
-    z-index: -1;
+    z-index: -9998;
 }
 
 .power-cookie {
@@ -104,3 +104,128 @@
 
     }
 }
+
+.ghost {
+    position: relative;
+    top: 0;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 100% 100% 0 0;
+    border: 1px black;
+    background-color: yellow;
+    animation-name: move; 
+    animation-iteration-count: infinite;
+    animation-duration: 11s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    margin: 0 5px;
+}
+
+    .tail {
+        position: relative;
+        height: 20px;
+        width: 100%;
+        background-repeat: repeat-x;
+        top: 100px;
+    }
+
+    .blinky .tail{
+        background: 
+            linear-gradient(-45deg, transparent 75%, red 75%) 0 50%,
+            linear-gradient( 45deg, transparent 75%, red 75%) 0 50%;
+        background-size: 20px 20px, 20px 20px;
+    }
+    
+    .clyde .tail{
+        background:
+        linear-gradient(-45deg, transparent 75%, orange 75%) 0 50%,
+        linear-gradient( 45deg, transparent 75%, orange 75%) 0 50%;
+        background-size:20px 20px, 20px 20px;
+    }
+    
+    .inky .tail{
+        background:
+        linear-gradient(-45deg, transparent 75%, cyan 75%) 0 50%,
+        linear-gradient( 45deg, transparent 75%, cyan 75%) 0 50%;
+        background-size:20px 20px, 20px 20px;
+    }
+    
+    .pinky .tail{
+        background:
+        linear-gradient(-45deg, transparent 75%, pink 75%) 0 50%,
+        linear-gradient( 45deg, transparent 75%, pink 75%) 0 50%;
+        background-size:20px 20px, 20px 20px;
+    }
+
+
+.blinky{ 
+    background-color: red;
+    right: 40%
+}
+.clyde{ 
+    background-color: orange;
+    right: 40%
+}
+.inky{ 
+    background-color: cyan;
+    right: 40%
+}
+.pinky{ 
+    background-color: pink;
+    right: 40%
+}
+
+.ghost-eyes{
+    position: absolute;
+    top: 30px;
+    height: 30px;
+    width: 100%;
+    z-index: 1
+}
+    .left-eye{
+        position: relative;
+        display: inline-block;
+        margin-left: 20%;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: white;
+        z-index: 2;
+    }
+    .right-eye{
+        position: relative;
+        display: inline-block;
+        margin-left: 20%;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: white;
+        z-index: 2;
+    }
+        
+        .left-pupil{
+            position: relative;
+            top: 5px;
+            left: 5px;
+            display: inline-block;
+            margin-left: 20%;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: blue;
+            z-index: 2;
+        }
+
+        .right-pupil{
+            position: relative;
+            top: 5px;
+            left: 5px;
+            display: inline-block;
+            margin-left: 20%;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: blue;
+            z-index: 2;
+        }
