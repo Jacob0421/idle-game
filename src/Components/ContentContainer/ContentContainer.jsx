@@ -5,7 +5,7 @@ import { GeneratorData } from "../../Data/GeneratorInitialValues";
 import "./ContentContainer.css";
 
 export function ContentContainer() {
-	const [money, setMoney] = useState(0);
+	const [money, setMoney] = useState(200000000);
 	const [generators, setGenerators] = useState([
 		{
 			level: 1,
@@ -18,6 +18,7 @@ export function ContentContainer() {
 			revenue: GeneratorData[0].revenue,
 			timeToGenerate: GeneratorData[0].time,
 			revenueMultiplier: 1,
+			image: GeneratorData[0].image,
 		},
 	]);
 
@@ -42,6 +43,7 @@ export function ContentContainer() {
 				revenue: newGeneratorData.revenue,
 				timeToGenerate: newGeneratorData.time,
 				revenueMultiplier: 1,
+				image: newGeneratorData.image,
 			},
 		]);
 	};
@@ -94,9 +96,19 @@ export function ContentContainer() {
 		setGenerators([...generatorArray]);
 	};
 
+	function displayCostButton() {
+		if (GeneratorData[generators.length]) {
+			return (
+				<button onClick={handleNewGenerator}>
+					Cost: {GeneratorData[generators.length].cost}
+				</button>
+			);
+		}
+	}
+
 	return (
 		<section className="content-container">
-			<h1>Money: {money}</h1>
+			<h1 className="money-amount">Money: {money}</h1>
 			{generators.map((generator, index) => (
 				<MoneyGenerator
 					key={index + 1}
@@ -108,12 +120,10 @@ export function ContentContainer() {
 					timeToGenerate={generator.timeToGenerate}
 					handleLevelUp={handleLevelUp}
 					handleMoneyChange={handleMoneyChange}
+					image={generator.image}
 				/>
 			))}
-			<button onClick={handleNewGenerator}>
-				Get New Generator Cost:
-				{GeneratorData[generators.length].cost}
-			</button>
+			{displayCostButton()}
 		</section>
 	);
 }

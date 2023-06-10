@@ -1,5 +1,11 @@
 .content-container{
     display: flex;
     flex-direction: column;
-    gap: .4vh
+    gap: .4vh;
+    max-height: 90vh;
+    flex-wrap: wrap;
+}
+
+.money-amount {
+    color: white;
 }
