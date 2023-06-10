@@ -1,0 +1,231 @@
+.pacman-animation{
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    width: 96vw;
+    padding: 1vh 2vw;
+    overflow: hidden;
+}
+
+
+.pacman {
+    position: relative;
+    left: -20%;
+    top: 0;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px black;
+    background-color: yellow;
+    animation: move infinite 11s linear, mouth infinite .5s linear;
+}
+
+.pacman-eye{
+    display: block;
+    position: relative;
+    background-color: black;
+    top: 20%;
+    left: 50%;
+    border-radius: 50%;
+    height: 10px;
+    width: 8px;
+}
+
+@keyframes mouth {
+    0%{
+            background: conic-gradient(from 75deg, transparent 0deg 30deg, yellow 30deg 75deg)
+    } 25% {
+            background: conic-gradient(from 60deg, transparent 0deg 60deg, yellow 60deg 60deg)
+    } 50% {
+            background: conic-gradient(from 45deg, transparent 0deg 90deg, yellow 60deg 60deg)
+    } 75% {
+            background: conic-gradient(from 60deg, transparent 0deg 60deg, yellow 60deg 60deg)
+    } 100%{
+        background: yellow;
+    }
+}
+
+@keyframes move {
+    45% {
+        transform: translateX(140vw)
+    } 50% {
+        transform: translateX(140vw) scaleX(-1);
+    }
+    95% {
+        transform: translateX(-120px) scaleX(-1);
+    } 96%{
+        transform: translateX(-120px) scaleX(1)
+    }
+}
+
+.pellet-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 101px;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -9999;
+}
+
+.snack-pellet {
+    position: relative;
+    top: 40%;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(255, 228, 155);
+    border-radius: 50%;
+    z-index: -9998;
+}
+
+.power-cookie {
+    position: relative;
+    top: 25%;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(255, 228, 155);
+    border-radius: 50%;
+    z-index: -1;
+
+}
+
+@keyframes blink {
+    0% {
+        
+    } 25% {
+
+    } 50% {
+
+    } 75% {
+
+    } 100% {
+
+    }
+}
+
+.ghost {
+    position: relative;
+    top: 0;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 100% 100% 0 0;
+    border: 1px black;
+    background-color: yellow;
+    animation-name: move; 
+    animation-iteration-count: infinite;
+    animation-duration: 11s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    margin: 0 5px;
+}
+
+    .tail {
+        position: relative;
+        height: 20px;
+        width: 100%;
+        background-repeat: repeat-x;
+        top: 100px;
+    }
+
+    .blinky .tail{
+        background: 
+            linear-gradient(-45deg, transparent 75%, red 75%) 0 50%,
+            linear-gradient( 45deg, transparent 75%, red 75%) 0 50%;
+        background-size: 20px 20px, 20px 20px;
+    }
+    
+    .clyde .tail{
+        background:
+        linear-gradient(-45deg, transparent 75%, orange 75%) 0 50%,
+        linear-gradient( 45deg, transparent 75%, orange 75%) 0 50%;
+        background-size:20px 20px, 20px 20px;
+    }
+    
+    .inky .tail{
+        background:
+        linear-gradient(-45deg, transparent 75%, cyan 75%) 0 50%,
+        linear-gradient( 45deg, transparent 75%, cyan 75%) 0 50%;
+        background-size:20px 20px, 20px 20px;
+    }
+    
+    .pinky .tail{
+        background:
+        linear-gradient(-45deg, transparent 75%, pink 75%) 0 50%,
+        linear-gradient( 45deg, transparent 75%, pink 75%) 0 50%;
+        background-size:20px 20px, 20px 20px;
+    }
+
+
+.blinky{ 
+    background-color: red;
+    right: 40%
+}
+.clyde{ 
+    background-color: orange;
+    right: 40%
+}
+.inky{ 
+    background-color: cyan;
+    right: 40%
+}
+.pinky{ 
+    background-color: pink;
+    right: 40%
+}
+
+.ghost-eyes{
+    position: absolute;
+    top: 30px;
+    height: 30px;
+    width: 100%;
+    z-index: 1
+}
+    .left-eye{
+        position: relative;
+        display: inline-block;
+        margin-left: 20%;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: white;
+        z-index: 2;
+    }
+    .right-eye{
+        position: relative;
+        display: inline-block;
+        margin-left: 20%;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: white;
+        z-index: 2;
+    }
+        
+        .left-pupil{
+            position: relative;
+            top: 5px;
+            left: 5px;
+            display: inline-block;
+            margin-left: 20%;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: blue;
+            z-index: 2;
+        }
+
+        .right-pupil{
+            position: relative;
+            top: 5px;
+            left: 5px;
+            display: inline-block;
+            margin-left: 20%;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: blue;
+            z-index: 2;
+        }

@@ -1,9 +1,41 @@
 .generator{
-    border: 1px solid black;
-    padding: .4vh 4vw
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid grey;
+    padding: 1vh 1vw;
+    background-color: rgba(184, 184, 184, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    gap: 2vw;
 }
 
-.stat-container{
-    display: flex;
-    justify-content: space-between;
+.generator-icon {
+    max-height: 6em;
+    max-width: 6em;
+    border-radius: 50%;
+    background-color: black;
 }
+
+    .generator-icon:hover{
+        cursor: pointer;
+    }
+
+    .click-animation{
+        animation: wave .2s 1 ease
+    }
+
+    @keyframes wave
+    {
+        0% {
+            transform: scale(.95);
+            box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.2);
+        }
+        50%{
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(.95);
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        }
+    }
