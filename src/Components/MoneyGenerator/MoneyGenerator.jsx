@@ -22,6 +22,7 @@ export function MoneyGenerator(params) {
 			timeToGenerate
 		);
 		return () => clearInterval(interval);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [revenue]);
 
 	return (

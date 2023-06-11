@@ -63,6 +63,8 @@ export function ContentContainer() {
 				setMoney((money) => money - changeAmount);
 				returnFlag = true;
 				break;
+			default:
+				break;
 		}
 
 		return returnFlag;
