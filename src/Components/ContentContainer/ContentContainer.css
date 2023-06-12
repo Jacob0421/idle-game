@@ -2,10 +2,40 @@
     display: flex;
     flex-direction: column;
     gap: .4vh;
-    max-height: 90vh;
     flex-wrap: wrap;
+
 }
 
 .money-amount {
+    position: sticky;
+    width: 100vw;
+    top: 0;
     color: white;
+    z-index: 9999;
+    text-align: center;
+}
+
+/* X-small Devices (Portrait Phones)*/
+@media (min-width: 576px) {
+    .content-container {
+        flex-wrap: nowrap;
+    }
+    
+    .btn-new-generator{
+        width: 100%
+    }
+}
+
+/* Medium Devices (Tablets)*/
+@media (min-width: 992px) {
+    .content-container{
+        display: flex;
+        flex-direction: column;
+        max-height: 80vh;
+        flex-wrap: wrap;
+    }
+
+    .btn-new-generator{
+        width: 30%;
+    }
 }

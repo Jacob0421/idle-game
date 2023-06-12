@@ -101,7 +101,7 @@ export function ContentContainer() {
 	function displayCostButton() {
 		if (GeneratorData[generators.length]) {
 			return (
-				<button onClick={handleNewGenerator}>
+				<button onClick={handleNewGenerator} className="btn-new-generator">
 					Cost: {GeneratorData[generators.length].cost}
 				</button>
 			);
@@ -109,23 +109,25 @@ export function ContentContainer() {
 	}
 
 	return (
-		<section className="content-container">
+		<>
 			<h1 className="money-amount">Money: {money}</h1>
-			{generators.map((generator, index) => (
-				<MoneyGenerator
-					key={index + 1}
-					id={index}
-					name={generator.name}
-					level={generator.level}
-					revenue={generator.revenue}
-					costToLevel={generator.costToLevel}
-					timeToGenerate={generator.timeToGenerate}
-					handleLevelUp={handleLevelUp}
-					handleMoneyChange={handleMoneyChange}
-					image={generator.image}
-				/>
-			))}
-			{displayCostButton()}
-		</section>
+			<section className="content-container">
+				{generators.map((generator, index) => (
+					<MoneyGenerator
+						key={index + 1}
+						id={index}
+						name={generator.name}
+						level={generator.level}
+						revenue={generator.revenue}
+						costToLevel={generator.costToLevel}
+						timeToGenerate={generator.timeToGenerate}
+						handleLevelUp={handleLevelUp}
+						handleMoneyChange={handleMoneyChange}
+						image={generator.image}
+					/>
+				))}
+				{displayCostButton()}
+			</section>
+		</>
 	);
 }
